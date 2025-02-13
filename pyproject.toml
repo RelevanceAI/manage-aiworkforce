@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "manage-aiworkforce"
+version = "0.1.0"
+description = "Manage your Relevance AI workforce and deployments via filestores and GitHub."
+authors = ["Alex Jenkins <alex@relevanceai.com>"]
+readme = "README.md"
+packages = [
+    { include = "manage_aiworkforce" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
