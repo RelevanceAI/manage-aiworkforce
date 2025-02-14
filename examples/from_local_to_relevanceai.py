@@ -1,5 +1,4 @@
 from manage_aiworkforce.agent import create_agent
-from manage_aiworkforce.knowledge import create_knowledge
 from manage_aiworkforce.tool import create_tools
 from manage_aiworkforce.utils import open_all_object_files
 
