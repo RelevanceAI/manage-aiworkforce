@@ -2,7 +2,7 @@ import requests
 from typing import Optional
 
 from manage_aiworkforce.utils import save_all_objects
-
+from manage_aiworkforce.types import FilterType
 
 
 def get_all_agents(region_id:str, project_id:str, api_key:str):
@@ -13,8 +13,8 @@ def get_all_agents(region_id:str, project_id:str, api_key:str):
         path, 
         headers=headers, 
         params={
-            "page_size" : 9999, 
-            "filters" : [{"field":"project","condition":"==","condition_value":project_id,"filter_type":"exact_match"}]
+            "page_size" : 50000, 
+            "filters" : [{"field":"project","condition":"==","condition_value":project_id,"filter_type":FilterType.EXACT_MATCH}]
         }
     )
     
