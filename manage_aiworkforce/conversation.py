@@ -46,3 +46,20 @@ def get_conversations_where_specific_tool_failed(region_id:str, project_id:str, 
     }
     response = requests.get(path, headers=headers, params=json.dumps(api_params))
     return response.json()
+
+
+def retrigger_conversation_after_message(project_id:str, region_id:str, agent_id:str, conversation_id:str, message_id:str, api_key:str):
+    headers = {"Authorization": f"{project_id}:{api_key}"}
+    base_url = f"https://api-{region_id}.stack.tryrelevance.com/latest"
+    path = f"{base_url}/agents/trigger"
+
+    payload = {
+        "action": "regenerate",
+        "regenerate_message_id": message_id,
+        "agent_id": agent_id,
+        "conversation_id": conversation_id,
+    }
+
+    response = requests.post(path, headers=headers, json=payload)
+    return response.json()
+
