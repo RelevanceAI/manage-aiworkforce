@@ -1,5 +1,5 @@
 import requests
-
+import json
 
 def get_all_knowledge(region_id, project_id, api_key):
     headers = {"Authorization": f"{project_id}:{api_key}"}
@@ -23,7 +23,7 @@ def get_knowledge(region_id:str, project_id:str, api_key:str, knowledge_set: str
         "page_size": max_results,
         "sort": [{"insert_date_": "desc"}]
     }
-    response = requests.post(path, json=body, headers=headers)
+    response = requests.post(path, data=json.dumps(body), headers=headers)
     if response.status_code == 200:
         return response.json().get("results", [])
     return {"error": response.text}
