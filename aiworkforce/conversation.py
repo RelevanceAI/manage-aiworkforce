@@ -1,7 +1,7 @@
 import requests
 import json
 
-from manage_aiworkforce.types import EventType, FilterType, ComparisonType
+from aiworkforce.types import EventType, FilterType, ComparisonType
 
 
 def get_conversations(region_id:str, project_id:str, agent_id:str, api_key:str):

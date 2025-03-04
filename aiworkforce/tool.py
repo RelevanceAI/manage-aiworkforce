@@ -1,6 +1,21 @@
 import requests
-from manage_aiworkforce.utils import save_all_objects
-from manage_aiworkforce.types import FilterType
+from aiworkforce.utils import save_all_objects
+from aiworkforce.types import FilterType
+
+def get_tool(tool_id:str, region_id:str, project_id:str, api_key:str, limit:int=1):
+    headers = {"Authorization": f"{project_id}:{api_key}"}
+    base_url = f"https://api-{region_id}.stack.tryrelevance.com/latest"
+    path = f"{base_url}/studios/list"
+    response = requests.get(
+        path, 
+        headers=headers, 
+        params={
+            "page_size": limit, 
+            "filters": f'[{{"field":"project","condition":"==","condition_value":"{project_id}","filter_type":{FilterType.EXACT_MATCH}}},{{"field":"studio_id","condition":"==","condition_value":"{tool_id}","filter_type":{FilterType.EXACT_MATCH}}}]'
+        }
+    )
+    return response.json()['results'][0]
+
 
 def get_all_tools(region_id:str, project_id:str, api_key:str, limit:int=50000):
     headers = {"Authorization": f"{project_id}:{api_key}"}
@@ -62,6 +77,19 @@ def delete_tools(tool_ids:list, region_id:str, project_id:str, api_key:str):
     base_url = f"https://api-{region_id}.stack.tryrelevance.com/latest"
     path = f"{base_url}/studios/bulk_delete"
     response = requests.post(path, json={"ids": tool_ids}, headers=headers)
+    return response.json()
+
+
+def update_tool(tool_json:dict, region_id:str, project_id:str, api_key:str):
+    headers = {"Authorization": f"{project_id}:{api_key}"}
+    base_url = f"https://api-{region_id}.stack.tryrelevance.com/latest"
+    path = f"{base_url}/studios/bulk_update"
+    payload = {
+        "updates": [tool_json],
+        "partial_update": True,
+        "insert_if_not_exists": False
+    }
+    response = requests.post(path, json=payload, headers=headers)
     return response.json()
 
 

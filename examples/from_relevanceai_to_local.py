@@ -1,6 +1,6 @@
-from manage_aiworkforce.agent import get_all_agents
-from manage_aiworkforce.tool import get_all_tools
-from manage_aiworkforce.utils import save_all_objects, update_objects_metadata, remove_objects_changing_fields, remove_local_files_not_in_objects
+from aiworkforce.agent import get_all_agents
+from aiworkforce.tool import get_all_tools
+from aiworkforce.utils import save_all_objects, update_objects_metadata, remove_objects_changing_fields, remove_local_files_not_in_objects
 
 def get_current_state_from_relevance_ai(region_id, dev_project_id, dev_api_key, prd_project_id):
     # Sync Dev Relevance AI to local

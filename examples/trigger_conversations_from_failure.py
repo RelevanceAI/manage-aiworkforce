@@ -2,8 +2,8 @@ import os
 import time
 from dotenv import load_dotenv
 
-from manage_aiworkforce.types import ConversationState
-from manage_aiworkforce.conversation import get_conversations, retrigger_conversation_after_message, get_conversation_actions
+from aiworkforce.types import ConversationState
+from aiworkforce.conversation import get_conversations, retrigger_conversation_after_message, get_conversation_actions
 
 
 if __name__ == "__main__":

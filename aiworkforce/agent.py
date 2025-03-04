@@ -1,8 +1,8 @@
 import requests
 from typing import Optional
 
-from manage_aiworkforce.utils import save_all_objects
-from manage_aiworkforce.types import FilterType
+from aiworkforce.utils import save_all_objects
+from aiworkforce.types import FilterType
 
 
 def get_all_agents(region_id:str, project_id:str, api_key:str):

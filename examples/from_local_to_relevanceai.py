@@ -1,6 +1,6 @@
-from manage_aiworkforce.agent import create_agent
-from manage_aiworkforce.tool import create_tools
-from manage_aiworkforce.utils import open_all_object_files
+from aiworkforce.agent import create_agent
+from aiworkforce.tool import create_tools
+from aiworkforce.utils import open_all_object_files
 
 def push_to_relevance_ai_prod(region_id, prd_project_id, prd_api_key):
     agents = open_all_object_files("relevance_ai/agents")

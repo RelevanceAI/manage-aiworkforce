@@ -5,7 +5,7 @@ description = "Manage your Relevance AI workforce and deployments via filestores
 authors = ["Alex Jenkins <alex@relevanceai.com>"]
 readme = "README.md"
 packages = [
-    { include = "manage_aiworkforce" }
+    { include = "aiworkforce" }
 ]
 
 [tool.poetry.dependencies]
