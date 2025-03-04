@@ -15,6 +15,10 @@ The example script `examples/from_relevanceai_to_local.py` fetches agents and to
 
 The example script `examples/from_local_to_relevanceai.py` reads local JSON files (for agents and tools) and pushes them to your production Relevance AI environment. This is useful for:
 
+### 3. Retrigger Failed Conversations
+
+The example script `examples/trigger_conversations_from_failure.py` shows how you can identify and regenerate conversations that have errored, starting them from just before the last error.
+
 ## API Functions
 
 The package provides core functions to interact directly with the Relevance AI API:
@@ -23,6 +27,8 @@ The package provides core functions to interact directly with the Relevance AI A
   - `get_all_agents`
   - `create_agent`
   - `get_agent_tools`
+  - `get_agent_conversations`
+  - `get_failed_agent_conversations`
   
 - **Knowledge**
   - `get_all_knowledge`
@@ -35,10 +41,14 @@ The package provides core functions to interact directly with the Relevance AI A
   - `get_all_tools`
   - `create_tools`
   - `delete_tools`
+  - `get_tool_run_history`
+  - `trigger_tool`
   
-- **Utility Functions**
-  - File I/O helpers like `open_all_object_files` and `save_all_objects` for local file management.
-  - Functions to clean and update metadata to ensure consistency between environments.
+- **Conversations**
+  - `get_conversations`
+  - `get_conversation_actions`
+  - `get_conversations_where_specific_tool_failed`
+  - `retrigger_conversation_after_message`
 
 ## Contributing
 
