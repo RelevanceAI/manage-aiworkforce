@@ -1,4 +1,5 @@
 import requests
+import json
 from aiworkforce.utils import save_all_objects
 from aiworkforce.types import FilterType
 
@@ -11,7 +12,7 @@ def get_tool(tool_id:str, region_id:str, project_id:str, api_key:str, limit:int=
         headers=headers, 
         params={
             "page_size": limit, 
-            "filters": f'[{{"field":"project","condition":"==","condition_value":"{project_id}","filter_type":{FilterType.EXACT_MATCH}}},{{"field":"studio_id","condition":"==","condition_value":"{tool_id}","filter_type":{FilterType.EXACT_MATCH}}}]'
+            "filters": json.dumps([{"field":"project","condition":"==","condition_value":project_id,"filter_type":FilterType.EXACT_MATCH}, {"field":"studio_id","condition":"==","condition_value":tool_id,"filter_type":FilterType.EXACT_MATCH}])
         }
     )
     return response.json()['results'][0]
@@ -26,7 +27,7 @@ def get_all_tools(region_id:str, project_id:str, api_key:str, limit:int=50000):
         headers=headers, 
         params={
             "page_size" : limit,
-            "filters" : f'[{{"field":"project","condition":"==","condition_value":"{project_id}","filter_type":{FilterType.EXACT_MATCH}}}]'
+            "filters" : json.dumps([{"field":"project","condition":"==","condition_value":project_id,"filter_type":FilterType.EXACT_MATCH}])
         }
     )
     return response.json()['results']
@@ -51,7 +52,7 @@ def get_tool_run_history(tool_id:str, region_id:str, project_id:str, api_key:str
     path = f"{base_url}/studios/run_history/list"
     payload = {
         "page_size": 999999999999,
-        "filters": f'[{{"filter_type":{FilterType.EXACT_MATCH},"field":"project","condition":"==","condition_value":"{project_id}"}},{{"filter_type":{FilterType.EXACT_MATCH},"field":"studio_id","condition":"==","condition_value":"{tool_id}"}}]',
+        "filters": json.dumps([{"filter_type":FilterType.EXACT_MATCH,"field":"project","condition":"==","condition_value":project_id}, {"filter_type":FilterType.EXACT_MATCH,"field":"studio_id","condition":"==","condition_value":tool_id}]),
         "with_agent_details": True
     }
     response = requests.get(path, headers=headers, params=payload)
