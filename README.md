@@ -19,36 +19,53 @@ The example script `examples/from_local_to_relevanceai.py` reads local JSON file
 
 The example script `examples/trigger_conversations_from_failure.py` shows how you can identify and regenerate conversations that have errored, starting them from just before the last error.
 
+### 4. Agent costs of past conversations between a given timeframe.
+
+The example script `examples/get_agent_conversation_costs.py` calculates the costs of past conversations for a given agent within a specified timeframe. This is useful for understanding the cost distribution and usage patterns of your agents over time. Note: May not properly count subagents' costs.
+
 ## API Functions
 
 The package provides core functions to interact directly with the Relevance AI API:
-
 - **Agents**
   - `get_all_agents`
   - `create_agent`
   - `get_agent_tools`
-  - `get_agent_conversations`
-  - `get_failed_agent_conversations`
-  
+  - `delete_agent`
+  - `update_agent`
+  - `schedule_message_to_agent`
+  - `get_agent_analytics`
+  - `save_agents_to_file`
+
 - **Knowledge**
   - `get_all_knowledge`
   - `get_knowledge`
-  - `create_knowledge`
   - `delete_knowledge`
+  - `add_knowledge_data`
   - `get_knowledge_metadata`
-  
+
 - **Tools**
+  - `get_tool`
   - `get_all_tools`
   - `create_tools`
   - `delete_tools`
   - `get_tool_run_history`
   - `trigger_tool`
-  
+  - `poll_tool_run`
+  - `update_tool`
+  - `save_tools_to_file`
+
 - **Conversations**
   - `get_conversations`
+  - `get_list_conversation_studio_history`
   - `get_conversation_actions`
-  - `get_conversations_where_specific_tool_failed`
   - `retrigger_conversation_after_message`
+  - `trigger_agent_debug_conversation`
+  - `get_trigger_message`
+  - `get_conversations_where_specific_tool_failed`
+  - `get_conversations_between_dates`
+
+- **Snippets**
+  - `upsert_snippet`
 
 ## Contributing
 

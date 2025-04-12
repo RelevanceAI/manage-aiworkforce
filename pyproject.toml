@@ -5,13 +5,14 @@ description = "Manage your Relevance AI workforce and deployments via filestores
 authors = ["Alex Jenkins <alex@relevanceai.com>"]
 readme = "README.md"
 packages = [
-    { include = "manage_aiworkforce" }
+    { include = "aiworkforce" }
 ]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "^2.32.3"
 python-dotenv = "^1.0.1"
+pytz = "^2025.2"
 
 
 [build-system]

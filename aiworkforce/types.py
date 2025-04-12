@@ -36,3 +36,8 @@ class ConversationState:
     ERRORED_PENDING_APPROVAL = "errored-pending-approval"
     QUEUED_FOR_APPROVAL = "queued-for-approval"
     QUEUED_FOR_RERUN = "queued-for-rerun"
+
+class ActionBehaviour:
+    NEVER_ASK = "never-ask"
+    ALWAYS_ASK = "always-ask"
+    CONDITIONAL_APPROVAL = "conditional-approval"
