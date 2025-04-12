@@ -73,6 +73,15 @@ def trigger_tool(tool_id:str, region_id:str, project_id:str, api_key:str, tool_i
     return response.json()
 
 
+def poll_tool_run(tool_id:str, region_id:str, project_id:str, api_key:str, job_id:str):
+    """ Check if trigger_tool has finished running. Loop until response["type"] != 'timeout' """
+    headers = {"Authorization": f"{project_id}:{api_key}"}
+    base_url = f"https://api-{region_id}.stack.tryrelevance.com/latest"
+    path = f"{base_url}/studios/{tool_id}/async_poll/{job_id}"
+    response = requests.get(path, headers=headers)
+    return response.json()
+
+
 def delete_tools(tool_ids:list, region_id:str, project_id:str, api_key:str):
     headers = {"Authorization": f"{project_id}:{api_key}"}
     base_url = f"https://api-{region_id}.stack.tryrelevance.com/latest"
