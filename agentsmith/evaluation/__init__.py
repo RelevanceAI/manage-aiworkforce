@@ -8,8 +8,8 @@ from .setup_evaluator import SetupEvaluator
 
 from typing import Optional, Type, Dict, List
 
-# Auto-discover subclasses of Evaluator from the imported modules
-# Ensure all evaluator modules are imported above
+# NOTE: Who validates the validator: https://arxiv.org/abs/2404.12272
+
 _evaluator_classes: Dict[str, Type[Evaluator]] = {
     cls().name: cls
     for cls in Evaluator.__subclasses__()

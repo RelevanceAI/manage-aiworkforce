@@ -34,7 +34,7 @@ def get_conversations(region_id:str, project_id:str, agent_id:str, api_key:str):
         "page_size": 500000,
     }
     
-    response = requests.get(path, headers=headers, params=json.dumps(api_params))
+    response = requests.get(path, headers=headers, params=api_params)
     return response.json()
 
 
